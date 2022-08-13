@@ -51,4 +51,35 @@ class PostController extends Controller
             ]);
         }
     }
+
+    public function delete_post($id){
+        $post = Post::where('user_id',auth('api')->user()->id)->find($id);
+        if($post){
+            $post->delete();
+            return response()->json([
+                'message' => 'post Delete Successfully',
+                'status' => 203
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'Not Post With This Id',
+                'status' => 400
+            ]);
+        }
+    }
+
+    public function show_post($id){
+        $post = Post::where('user_id',auth('api')->user()->id)->find($id);
+        if($post){
+            return response()->json([
+                'status' => 200,
+                'data' => $post
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'Not Post With This Id',
+                'status' => 400
+            ]);
+        }
+    }
 }

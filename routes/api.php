@@ -39,6 +39,9 @@ Route::group(['middleware' => 'api'],function(){
     Route::get('all_posts',[PostController::class,'index']);
     Route::post('add_post',[PostController::class,'store']);
     Route::post('update_post/{id}',[PostController::class,'update']);
+    Route::delete('delete_post/{id}',[PostController::class,'delete_post']);
+    Route::get('show_post/{id}',[PostController::class,'show_post']);
+
 });
 
 
